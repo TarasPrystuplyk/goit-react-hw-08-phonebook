@@ -1,41 +1,28 @@
 import PropTypes from 'prop-types';
-import { ContactsTitle, List } from './ContactsListStyled';
-import { ContactItem } from './ContactsListItem';
-import { useFetchContactsQuery } from '../../redux/contactsApi';
 import { useSelector } from 'react-redux';
-import { getFilter } from '../../redux/contactsSelectors';
+import { List, Name, ContactsTitle } from './ContactsList.styled';
+import { getVisibleContacts } from '../../redux/myContacts/contactsSelectors';
+import { ContactsListContainer } from './ContactsList.styled';
+import { Item } from './ContactsItem';
 
 export const ContactList = () => {
-  const getVisibleContacts = (value, contacts) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(value.toLowerCase())
-    );
-  };
-  const { data: contacts } = useFetchContactsQuery();
-  const value = useSelector(getFilter);
-  let visibleContacts = null;
-  if (contacts) {
-    visibleContacts = getVisibleContacts(value, contacts);
-  }
+  const contacts = useSelector(getVisibleContacts);
+
   return (
-    <>
+    <ContactsListContainer>
       <ContactsTitle>Contacts list</ContactsTitle>
       <List>
-        {visibleContacts &&
-          visibleContacts.map(({ name, phone, id }) => (
-            <ContactItem key={id} id={id} name={name} phone={phone} />
-          ))}
+        <Name>Name</Name> <span>Phone</span>
+        {contacts &&
+          contacts.map(({ id, name, number }) => {
+            return <Item key={id} id={id} name={name} number={number} />;
+          })}
       </List>
-    </>
+    </ContactsListContainer>
   );
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
+  contactsInfo: PropTypes.arrayOf(PropTypes.shape),
+  deleteContact: PropTypes.func,
 };
