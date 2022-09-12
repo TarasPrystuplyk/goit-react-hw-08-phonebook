@@ -5,12 +5,7 @@ import { GlobalStyle } from 'components/globalStyle';
 import { ToastContainer } from 'react-toastify';
 // import styled from 'styled-components';
 
-// const BackgroundContainer = styled.div`
-//   background-image: url(https://mobimg.b-cdn.net/v3/fetch/fe/fe60b47090e616a0f7a60666f96c62f0.jpeg?w=1470&r=0.5625);
-//   background-position: top, right;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// `;
+
 const SharedLayout = () => {
   return (
     <>
@@ -35,4 +30,4 @@ const SharedLayout = () => {
 };
 
 export default SharedLayout;
-//  maxWidth={1440} margin="0 auto" px={16}
+
