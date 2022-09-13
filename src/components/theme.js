@@ -1,14 +1,19 @@
 export const theme = {
     colors: {
       black: '#000',
-      white: '#fff',
-      text: '#2a2a2a',
-      background: '#EFB',
-      primary: '#07c',
-      secondary: '#05a',
-      accent: '#D2691E',
-      accentText: '#FF0000',
+    white: '#FFF',
+    text: '#323232',
+    background: 'rgba(217, 217, 217, 0.27);',
+    accent: '#B0C4DE',
+    accentText: 'rgba(242, 242, 242, 0.8)',
+    blue: '#0dcaf0',
+
     },
+
+    textShadow: {
+    standart: '2px 3px rgba(0, 0, 0, 0.75)',
+    none: 'none',
+  },
     space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
     fonts: {
       body: 'system-ui, sans-serif',
